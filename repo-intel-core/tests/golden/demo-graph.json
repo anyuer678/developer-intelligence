@@ -1,0 +1,326 @@
+{
+ "buildRun": {
+  "buildSystem": [
+   "node",
+   "go-modules"
+  ],
+  "confidence": 0.9,
+  "devCmd": [
+   "go run ./cmd/server"
+  ],
+  "evidence": [
+   "生态默认",
+   "锁文件/manifest: package.json 存在"
+  ],
+  "installCmd": [
+   "npm install",
+   "go mod download"
+  ],
+  "testCmd": [
+   "go test ./..."
+  ]
+ },
+ "dependencyGraph": {
+  "external": [
+   {
+    "kind": "dev",
+    "name": "vitest",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^1.2.0"
+   },
+   {
+    "kind": "runtime",
+    "name": "github.com/x/y",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "v1.2.3"
+   },
+   {
+    "kind": "runtime",
+    "name": "vue",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^3.4.0"
+   }
+  ],
+  "internal": [
+   {
+    "frm": "(root)",
+    "to": "tools",
+    "weight": 1
+   },
+   {
+    "frm": "bin",
+    "to": "src",
+    "weight": 1
+   },
+   {
+    "frm": "cmd",
+    "to": "internal",
+    "weight": 1
+   }
+  ]
+ },
+ "entryPoints": [
+  {
+   "confidence": 0.9,
+   "evidence": [
+    "content: package main & func main("
+   ],
+   "file": "cmd/server/main.go",
+   "type": "cli"
+  },
+  {
+   "confidence": 0.85,
+   "evidence": [
+    "content: FastAPI("
+   ],
+   "file": "app.py",
+   "type": "server"
+  },
+  {
+   "confidence": 0.85,
+   "evidence": [
+    "package.json bin -> ./bin/cli.js"
+   ],
+   "file": "bin/cli.js",
+   "type": "cli"
+  },
+  {
+   "confidence": 0.85,
+   "evidence": [
+    "content: createApp("
+   ],
+   "file": "web/main.ts",
+   "type": "gui"
+  },
+  {
+   "confidence": 0.8,
+   "evidence": [
+    "content: if __name__"
+   ],
+   "file": "app.py",
+   "type": "cli"
+  }
+ ],
+ "frameworks": [
+  {
+   "category": "frontend-framework",
+   "confidence": 0.9,
+   "evidence": [
+    "declared: package.json:vue@^3.4.0"
+   ],
+   "name": "Vue",
+   "version": "^3.4.0"
+  },
+  {
+   "category": "testing",
+   "confidence": 0.85,
+   "evidence": [
+    "declared: package.json:vitest@^1.2.0"
+   ],
+   "name": "Vitest",
+   "version": "^1.2.0"
+  },
+  {
+   "category": "web-framework",
+   "confidence": 0.9,
+   "evidence": [
+    "content: FastAPI("
+   ],
+   "name": "FastAPI",
+   "version": null
+  }
+ ],
+ "git": null,
+ "languages": [
+  {
+   "files": 2,
+   "loc": 12,
+   "name": "go",
+   "pct": 44.4
+  },
+  {
+   "files": 2,
+   "loc": 9,
+   "name": "python",
+   "pct": 33.3
+  },
+  {
+   "files": 2,
+   "loc": 3,
+   "name": "javascript",
+   "pct": 11.1
+  },
+  {
+   "files": 2,
+   "loc": 3,
+   "name": "typescript",
+   "pct": 11.1
+  }
+ ],
+ "metrics": {
+  "complexityHotspots": [],
+  "largestFiles": [
+   {
+    "loc": 9,
+    "path": "cmd/server/main.go"
+   },
+   {
+    "loc": 7,
+    "path": "app.py"
+   },
+   {
+    "loc": 3,
+    "path": "internal/auth/auth.go"
+   },
+   {
+    "loc": 2,
+    "path": "bin/cli.js"
+   },
+   {
+    "loc": 2,
+    "path": "web/main.ts"
+   }
+  ],
+  "testEvidence": {
+   "frameworks": [
+    "vitest"
+   ],
+   "ratioToSource": null,
+   "testFileCount": 0
+  },
+  "todos": {
+   "fixmeCount": 0,
+   "todoCount": 0
+  },
+  "totalFiles": 10,
+  "totalLoc": 27
+ },
+ "modules": [
+  {
+   "cohesionScore": 0.0,
+   "files": 1,
+   "name": "(root)",
+   "responsibility": null,
+   "rootPath": "(root)"
+  },
+  {
+   "cohesionScore": 0.0,
+   "files": 1,
+   "name": "bin",
+   "responsibility": null,
+   "rootPath": "bin"
+  },
+  {
+   "cohesionScore": 0.0,
+   "files": 1,
+   "name": "cmd",
+   "responsibility": null,
+   "rootPath": "cmd"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "core",
+   "responsibility": null,
+   "rootPath": "core"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "internal",
+   "responsibility": null,
+   "rootPath": "internal"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "src",
+   "responsibility": null,
+   "rootPath": "src"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "tools",
+   "responsibility": null,
+   "rootPath": "tools"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "web",
+   "responsibility": null,
+   "rootPath": "web"
+  }
+ ],
+ "repo": {
+  "name": "demo-graph",
+  "vcs": {
+   "type": null
+  }
+ },
+ "schemaVersion": "1.0",
+ "structure": {
+  "configFiles": [
+   "go.mod",
+   "package.json"
+  ],
+  "topLevelDirs": [
+   {
+    "fileCount": 1,
+    "path": "bin",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "cmd",
+    "role": "guessed-entry"
+   },
+   {
+    "fileCount": 1,
+    "path": "core",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "internal",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "src",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "tools",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "web",
+    "role": "guessed-entry"
+   },
+   {
+    "fileCount": 3,
+    "path": "(root)",
+    "role": null
+   }
+  ]
+ },
+ "tool": {
+  "name": "repo-intel-core"
+ },
+ "warnings": [
+  {
+   "code": "MIXED_MONOREPO",
+   "detail": "检测到多生态 manifest 共存: go, node-ecosystem"
+  }
+ ]
+}

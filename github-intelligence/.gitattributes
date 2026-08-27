@@ -1,0 +1,4 @@
+# 统一换行符，源文件一律 LF
+* text=auto eol=lf
+*.png binary
+*.ico binary

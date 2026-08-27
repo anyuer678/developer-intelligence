@@ -1,0 +1,115 @@
+# 语言识别规则表（TASK-M0-03）
+# 三级信号：扩展名统计 → manifest 信号 → shebang 指纹
+
+extensions:
+  .py: python
+  .pyi: python
+  .pyw: python
+  .js: javascript
+  .mjs: javascript
+  .cjs: javascript
+  .jsx: javascript
+  .ts: typescript
+  .mts: typescript
+  .cts: typescript
+  .tsx: typescript
+  .vue: vue
+  .svelte: svelte
+  .go: go
+  .rs: rust
+  .java: java
+  .kt: kotlin
+  .kts: kotlin
+  .rb: ruby
+  .php: php
+  .c: c
+  .h: c
+  .cpp: cpp
+  .cc: cpp
+  .cxx: cpp
+  .hpp: cpp
+  .hh: cpp
+  .cs: csharp
+  .swift: swift
+  .scala: scala
+  .sh: shell
+  .bash: shell
+  .zsh: shell
+  .ps1: powershell
+  .psm1: powershell
+  .bat: batch
+  .cmd: batch
+  .html: html
+  .htm: html
+  .css: css
+  .scss: scss
+  .sass: scss
+  .less: less
+  .sql: sql
+  .r: r
+  .dart: dart
+  .lua: lua
+  .zig: zig
+  .sol: solidity
+
+# 数据/文档类：计入 totalFiles 但不参与语言占比（对齐 GitHub 行为）
+data_extensions:
+  .json: json
+  .jsonc: json
+  .yaml: yaml
+  .yml: yaml
+  .toml: toml
+  .ini: ini
+  .cfg: ini
+  .xml: xml
+  .md: markdown
+  .markdown: markdown
+  .rst: rst
+  .txt: text
+  .csv: csv
+  .env: dotenv
+  .proto: protobuf
+  .graphql: graphql
+  .gql: graphql
+
+# manifest / 构建标记文件 → 生态信号（记入 structure.config_files）
+manifests:
+  go.mod: go
+  package.json: node-ecosystem
+  pyproject.toml: python-ecosystem
+  requirements.txt: python-ecosystem
+  setup.py: python-ecosystem
+  Cargo.toml: rust-ecosystem
+  pom.xml: java-ecosystem
+  build.gradle: java-ecosystem
+  build.gradle.kts: java-ecosystem
+  composer.json: php-ecosystem
+  Gemfile: ruby-ecosystem
+  mix.exs: elixir-ecosystem
+  Dockerfile: docker
+  Makefile: make
+
+# monorepo 标志（出现即打 MIXED/monorepo warning 的候选证据）
+monorepo_markers:
+  - pnpm-workspace.yaml
+  - lerna.json
+  - turbo.json
+  - go.work
+  - nx.json
+
+# shebang 指纹：无扩展名文件首行匹配 → 归入语言
+shebangs:
+  python: ["python", "python3"]
+  shell: ["sh", "bash", "zsh", "dash"]
+  ruby: ["ruby"]
+  node-ecosystem: ["node", "deno", "bun"]
+  powershell: ["pwsh", "powershell"]
+
+# 根目录补充标记文件（计入 config_files，无生态含义）
+root_markers:
+  - README.md
+  - LICENSE
+  - CHANGELOG.md
+  - .gitignore
+  - docker-compose.yml
+  - docker-compose.yaml

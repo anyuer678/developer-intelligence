@@ -1,0 +1,82 @@
+# 框架识别规则表（TASK-M2-02）
+# 信号三选一（命中任一即成立，证据记录来源）：
+#   dep <name>            —— 声明依赖（package.json/pyproject/requirements/go.mod），带版本
+#   glob + min_count      —— 仓库内文件模式计数
+#   content_any           —— 代码文本子串（限定 languages）
+
+rules:
+  # ---------- 前端框架 ----------
+  - {id: vue3, name: Vue, category: frontend-framework, confidence_base: 0.9, dep: [vue]}
+  - {id: react, name: React, category: frontend-framework, confidence_base: 0.9, dep: [react]}
+  - {id: svelte, name: Svelte, category: frontend-framework, confidence_base: 0.9, dep: [svelte]}
+  - {id: angular, name: Angular, category: frontend-framework, confidence_base: 0.9, dep: ["@angular/core"]}
+  - {id: nextjs, name: Next.js, category: frontend-framework, confidence_base: 0.9, dep: [next]}
+  - {id: nuxt, name: Nuxt, category: frontend-framework, confidence_base: 0.9, dep: [nuxt]}
+  - {id: vue-sfc, name: Vue, category: frontend-framework, confidence_base: 0.7,
+     glob: ["**/*.vue", 3]}
+
+  # ---------- Python Web ----------
+  - {id: fastapi, name: FastAPI, category: web-framework, confidence_base: 0.9, dep: [fastapi],
+     content_any: ["FastAPI("], languages: [python]}
+  - {id: flask, name: Flask, category: web-framework, confidence_base: 0.85, dep: [flask],
+     content_any: ["Flask("], languages: [python]}
+  - {id: django, name: Django, category: web-framework, confidence_base: 0.9, dep: [django]}
+  - {id: starlette, name: Starlette, category: web-framework, confidence_base: 0.8, dep: [starlette]}
+
+  # ---------- Node Web ----------
+  - {id: express, name: Express, category: web-framework, confidence_base: 0.85, dep: [express]}
+  - {id: koa, name: Koa, category: web-framework, confidence_base: 0.8, dep: [koa]}
+  - {id: nestjs, name: NestJS, category: web-framework, confidence_base: 0.9, dep: ["@nestjs/core"]}
+
+  # ---------- Go Web ----------
+  - {id: gin-go, name: Gin, category: web-framework, confidence_base: 0.9, dep: ["gin-gonic/gin"]}
+  - {id: echo-go, name: Echo, category: web-framework, confidence_base: 0.85, dep: ["labstack/echo"]}
+  - {id: fiber-go, name: Fiber, category: web-framework, confidence_base: 0.85, dep: ["gofiber/fiber"]}
+  - {id: chi-go, name: Chi, category: web-framework, confidence_base: 0.8, dep: ["go-chi/chi"]}
+
+  # ---------- Java ----------
+  - {id: spring-boot, name: Spring Boot, category: web-framework, confidence_base: 0.9, dep: [spring-boot]}
+
+  # ---------- AI / LLM ----------
+  - {id: openai-lib, name: OpenAI SDK, category: ai-llm, confidence_base: 0.85, dep: [openai]}
+  - {id: anthropic-lib, name: Anthropic SDK, category: ai-llm, confidence_base: 0.85, dep: [anthropic]}
+  - {id: langchain, name: LangChain, category: ai-llm, confidence_base: 0.9, dep: [langchain]}
+  - {id: llamaindex, name: LlamaIndex, category: ai-llm, confidence_base: 0.9, dep: [llama-index]}
+  - {id: transformers, name: Transformers, category: ai-llm, confidence_base: 0.9, dep: [transformers]}
+  - {id: torch, name: PyTorch, category: ai-llm, confidence_base: 0.9, dep: [torch]}
+  - {id: tensorflow, name: TensorFlow, category: ai-llm, confidence_base: 0.9, dep: [tensorflow]}
+
+  # ---------- 数据校验 / ORM ----------
+  - {id: pydantic-fw, name: Pydantic, category: data-validation, confidence_base: 0.8, dep: [pydantic]}
+  - {id: sqlalchemy, name: SQLAlchemy, category: orm, confidence_base: 0.85, dep: [sqlalchemy]}
+  - {id: prisma-fw, name: Prisma, category: orm, confidence_base: 0.9, dep: [prisma]}
+  - {id: typeorm, name: TypeORM, category: orm, confidence_base: 0.85, dep: [typeorm]}
+  - {id: gorm-go, name: GORM, category: orm, confidence_base: 0.9, dep: ["gorm.io/gorm"]}
+
+  # ---------- 测试框架 ----------
+  - {id: pytest-fw, name: Pytest, category: testing, confidence_base: 0.85, dep: [pytest]}
+  - {id: vitest-fw, name: Vitest, category: testing, confidence_base: 0.85, dep: [vitest]}
+  - {id: jest-fw, name: Jest, category: testing, confidence_base: 0.85, dep: [jest]}
+  - {id: playwright-fw, name: Playwright, category: testing, confidence_base: 0.85, dep: [playwright]}
+  - {id: cypress-fw, name: Cypress, category: testing, confidence_base: 0.85, dep: [cypress]}
+  - {id: go-test-fw, name: Go Test, category: testing, confidence_base: 0.7,
+     glob: ["**/*_test.go", 1]}
+
+  # ---------- 工具链 / 桌面 ----------
+  - {id: electron-fw, name: Electron, category: desktop-tool, confidence_base: 0.9, dep: [electron],
+     content_any: ["BrowserWindow"], languages: [typescript, javascript]}
+  - {id: vite-bundler, name: Vite, category: bundler, confidence_base: 0.8, dep: [vite]}
+  - {id: webpack-bundler, name: Webpack, category: bundler, confidence_base: 0.8, dep: [webpack]}
+  # ---------- 数据库 / 存储（下沉自 evocode stackdetect.DB_KEYWORDS，2026-08-26 对齐审计）----------
+  - {id: sqlite-db, name: SQLite, category: database, confidence_base: 0.8, dep: [sqlite, sqlite3]}
+  - {id: mysql-db, name: MySQL, category: database, confidence_base: 0.8, dep: [mysql, mysql2, mysql-connector-j]}
+  - {id: postgresql-db, name: PostgreSQL, category: database, confidence_base: 0.8, dep: [pg, pgvector, psycopg2, postgresql]}
+  - {id: redis-db, name: Redis, category: database, confidence_base: 0.8, dep: [redis]}
+  - {id: mongodb-db, name: MongoDB, category: database, confidence_base: 0.8, dep: [mongodb]}
+  - {id: mssql-db, name: SQL Server, category: database, confidence_base: 0.8, dep: [mssql, sqlserver]}
+  - {id: h2-db, name: H2, category: database, confidence_base: 0.75, dep: [com.h2database:h2]}
+
+  # ---------- Java 生态补齐（同源下沉）----------
+  - {id: mybatis-fw, name: MyBatis, category: orm, confidence_base: 0.85, dep: [mybatis, mybatis-plus]}
+  - {id: lombok-fw, name: Lombok, category: tooling, confidence_base: 0.8, dep: [lombok]}
+

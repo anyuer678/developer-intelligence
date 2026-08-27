@@ -1,0 +1,53 @@
+# 入口点模式表（TASK-M1-02，计划书 01 附录 B 的落地版）
+# 匹配语义：
+#   content_all    文本需同时包含的全部子串（大小写敏感）
+#   file_name      文件名精确匹配（可单独成规则）
+#   manifest_field 从根 package.json 取字段（bin 支持 string 或 map 值）
+#   languages      限定参与匹配的代码语言桶
+
+rules:
+  - id: python-__main__
+    type: cli
+    languages: [python]
+    content_all: ["if __name__"]
+    confidence: 0.8
+
+  - id: fastapi-app
+    type: server
+    languages: [python]
+    content_all: ["FastAPI("]
+    confidence: 0.85
+
+  - id: flask-app
+    type: server
+    languages: [python]
+    content_all: ["Flask("]
+    confidence: 0.8
+
+  - id: django-manage
+    type: server
+    file_name: manage.py
+    confidence: 0.85
+
+  - id: go-main-func
+    type: cli
+    languages: [go]
+    content_all: ["package main", "func main("]
+    confidence: 0.9
+
+  - id: node-bin-field
+    type: cli
+    manifest_field: bin
+    confidence: 0.85
+
+  - id: vue-createapp-gui
+    type: gui
+    languages: [typescript, javascript, vue]
+    content_all: ["createApp("]
+    confidence: 0.85
+
+  - id: electron-gui
+    type: gui
+    languages: [typescript, javascript]
+    content_all: ["BrowserWindow"]
+    confidence: 0.9

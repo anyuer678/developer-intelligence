@@ -1,0 +1,49 @@
+# 默认排除清单（计划书 01 附录 C；用户可用 .repointelignore 追加）
+
+# 命中即整棵剪枝的目录名（basename 精确匹配）
+dirs:
+  - node_modules
+  - vendor
+  - dist
+  - build
+  - out
+  - target
+  - .git
+  - .venv
+  - venv
+  - env
+  - __pycache__
+  - .pytest_cache
+  - .ruff_cache
+  - .mypy_cache
+  - coverage
+  - htmlcov
+  - .next
+  - .nuxt
+  - .cache
+  - .idea
+  - .vscode
+  - .tox
+  - site-packages
+  - .eggs
+
+# 文件 glob（相对路径或文件名匹配）
+file_globs:
+  - "*.min.js"
+  - "*.min.css"
+  - "*.map"
+  - "*.lock"
+  - "package-lock.json"
+  - "pnpm-lock.yaml"
+  - "yarn.lock"
+  - "poetry.lock"
+  - "composer.lock"
+  - "*.pb.go"
+  - "*_gen.go"
+  - "*.generated.*"
+
+# 超过该字节数的代码文件只计数不读内容（loc 记 0 并聚合计入 BIG_FILE_SKIPPED）
+max_file_bytes: 2097152
+
+# 单仓库文件数软上限：超过则要求显式白名单（M0 仅告警不阻断）
+soft_file_limit: 20000

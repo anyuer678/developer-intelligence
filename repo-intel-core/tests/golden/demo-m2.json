@@ -1,0 +1,309 @@
+{
+ "buildRun": {
+  "buildSystem": [
+   "node",
+   "python",
+   "make"
+  ],
+  "confidence": 0.9,
+  "devCmd": [
+   "npm run dev"
+  ],
+  "evidence": [
+   ".github/workflows run:",
+   "Makefile:dev",
+   "Makefile:install",
+   "Makefile:test",
+   "package.json scripts.dev: vite",
+   "package.json scripts.test: vitest"
+  ],
+  "installCmd": [
+   "npm install",
+   "pip install -r requirements.txt",
+   "pip install -e ."
+  ],
+  "testCmd": [
+   "npm run test",
+   "pytest",
+   "pytest -q"
+  ]
+ },
+ "dependencyGraph": {
+  "external": [
+   {
+    "kind": "dev",
+    "name": "vitest",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^1.2.0"
+   },
+   {
+    "kind": "runtime",
+    "name": "express",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^4.19.2"
+   },
+   {
+    "kind": "runtime",
+    "name": "fastapi",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "==0.110.0"
+   },
+   {
+    "kind": "runtime",
+    "name": "pydantic",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": ">=2"
+   },
+   {
+    "kind": "runtime",
+    "name": "pytest",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": ">=8"
+   },
+   {
+    "kind": "runtime",
+    "name": "vite",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^5"
+   },
+   {
+    "kind": "runtime",
+    "name": "vue",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^3.4.0"
+   }
+  ],
+  "internal": []
+ },
+ "entryPoints": [
+  {
+   "confidence": 0.85,
+   "evidence": [
+    "content: FastAPI("
+   ],
+   "file": "app.py",
+   "type": "server"
+  },
+  {
+   "confidence": 0.85,
+   "evidence": [
+    "content: createApp("
+   ],
+   "file": "src/index.ts",
+   "type": "gui"
+  }
+ ],
+ "frameworks": [
+  {
+   "category": "bundler",
+   "confidence": 0.8,
+   "evidence": [
+    "declared: package.json:vite@^5"
+   ],
+   "name": "Vite",
+   "version": "^5"
+  },
+  {
+   "category": "data-validation",
+   "confidence": 0.8,
+   "evidence": [
+    "declared: pyproject.toml:pydantic@>=2"
+   ],
+   "name": "Pydantic",
+   "version": ">=2"
+  },
+  {
+   "category": "frontend-framework",
+   "confidence": 0.9,
+   "evidence": [
+    "declared: package.json:vue@^3.4.0"
+   ],
+   "name": "Vue",
+   "version": "^3.4.0"
+  },
+  {
+   "category": "testing",
+   "confidence": 0.85,
+   "evidence": [
+    "declared: requirements.txt:pytest@>=8"
+   ],
+   "name": "Pytest",
+   "version": ">=8"
+  },
+  {
+   "category": "testing",
+   "confidence": 0.85,
+   "evidence": [
+    "declared: package.json:vitest@^1.2.0"
+   ],
+   "name": "Vitest",
+   "version": "^1.2.0"
+  },
+  {
+   "category": "web-framework",
+   "confidence": 0.9,
+   "evidence": [
+    "declared: requirements.txt:fastapi@==0.110.0"
+   ],
+   "name": "FastAPI",
+   "version": "==0.110.0"
+  },
+  {
+   "category": "web-framework",
+   "confidence": 0.85,
+   "evidence": [
+    "declared: package.json:express@^4.19.2"
+   ],
+   "name": "Express",
+   "version": "^4.19.2"
+  }
+ ],
+ "git": null,
+ "languages": [
+  {
+   "files": 2,
+   "loc": 423,
+   "name": "python",
+   "pct": 99.1
+  },
+  {
+   "files": 1,
+   "loc": 2,
+   "name": "javascript",
+   "pct": 0.5
+  },
+  {
+   "files": 1,
+   "loc": 2,
+   "name": "typescript",
+   "pct": 0.5
+  }
+ ],
+ "metrics": {
+  "complexityHotspots": [
+   {
+    "path": "app.py",
+    "signal": "long-file loc=421"
+   },
+   {
+    "path": "app.py",
+    "signal": "deep-nesting indent=28"
+   }
+  ],
+  "largestFiles": [
+   {
+    "loc": 421,
+    "path": "app.py"
+   },
+   {
+    "loc": 2,
+    "path": "src/index.ts"
+   },
+   {
+    "loc": 2,
+    "path": "tests/test_app.py"
+   },
+   {
+    "loc": 2,
+    "path": "src/utils.js"
+   }
+  ],
+  "testEvidence": {
+   "frameworks": [
+    "pytest",
+    "vitest"
+   ],
+   "ratioToSource": 0.25,
+   "testFileCount": 1
+  },
+  "todos": {
+   "fixmeCount": 0,
+   "todoCount": 2
+  },
+  "totalFiles": 9,
+  "totalLoc": 427
+ },
+ "modules": [
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "(root)",
+   "responsibility": null,
+   "rootPath": "(root)"
+  },
+  {
+   "cohesionScore": null,
+   "files": 2,
+   "name": "src",
+   "responsibility": null,
+   "rootPath": "src"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "tests",
+   "responsibility": null,
+   "rootPath": "tests"
+  }
+ ],
+ "repo": {
+  "name": "demo-m2",
+  "vcs": {
+   "type": null
+  }
+ },
+ "schemaVersion": "1.0",
+ "structure": {
+  "configFiles": [
+   "Makefile",
+   "package.json",
+   "pyproject.toml",
+   "requirements.txt"
+  ],
+  "topLevelDirs": [
+   {
+    "fileCount": 2,
+    "path": "src",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": ".github",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "tests",
+    "role": null
+   },
+   {
+    "fileCount": 5,
+    "path": "(root)",
+    "role": null
+   }
+  ]
+ },
+ "tool": {
+  "name": "repo-intel-core"
+ },
+ "warnings": [
+  {
+   "code": "MIXED_MONOREPO",
+   "detail": "检测到多生态 manifest 共存: node-ecosystem, python-ecosystem"
+  }
+ ]
+}

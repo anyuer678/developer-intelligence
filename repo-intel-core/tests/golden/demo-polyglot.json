@@ -1,0 +1,208 @@
+{
+ "buildRun": {
+  "buildSystem": [
+   "node",
+   "go-modules"
+  ],
+  "confidence": 0.9,
+  "devCmd": [
+   "npm run dev",
+   "go run ./cmd/server"
+  ],
+  "evidence": [
+   "package.json scripts.dev: vite",
+   "生态默认",
+   "锁文件/manifest: package.json 存在"
+  ],
+  "installCmd": [
+   "npm install",
+   "go mod download"
+  ],
+  "testCmd": [
+   "go test ./..."
+  ]
+ },
+ "dependencyGraph": {
+  "external": [
+   {
+    "kind": "runtime",
+    "name": "vue",
+    "risk": null,
+    "riskReason": null,
+    "usageFiles": 0,
+    "version": "^3.4.0"
+   }
+  ],
+  "internal": []
+ },
+ "entryPoints": [
+  {
+   "confidence": 0.9,
+   "evidence": [
+    "content: package main & func main("
+   ],
+   "file": "cmd/server/main.go",
+   "type": "cli"
+  }
+ ],
+ "frameworks": [
+  {
+   "category": "frontend-framework",
+   "confidence": 0.9,
+   "evidence": [
+    "declared: package.json:vue@^3.4.0"
+   ],
+   "name": "Vue",
+   "version": "^3.4.0"
+  }
+ ],
+ "git": null,
+ "languages": [
+  {
+   "files": 2,
+   "loc": 33,
+   "name": "go",
+   "pct": 50.0
+  },
+  {
+   "files": 1,
+   "loc": 20,
+   "name": "typescript",
+   "pct": 30.3
+  },
+  {
+   "files": 1,
+   "loc": 10,
+   "name": "python",
+   "pct": 15.2
+  },
+  {
+   "files": 1,
+   "loc": 2,
+   "name": "shell",
+   "pct": 3.0
+  },
+  {
+   "files": 1,
+   "loc": 1,
+   "name": "vue",
+   "pct": 1.5
+  }
+ ],
+ "metrics": {
+  "complexityHotspots": [],
+  "largestFiles": [
+   {
+    "loc": 30,
+    "path": "pkg/util/util.go"
+   },
+   {
+    "loc": 20,
+    "path": "src/index.ts"
+   },
+   {
+    "loc": 10,
+    "path": "app.py"
+   },
+   {
+    "loc": 3,
+    "path": "cmd/server/main.go"
+   },
+   {
+    "loc": 2,
+    "path": "run"
+   }
+  ],
+  "testEvidence": {
+   "frameworks": [],
+   "ratioToSource": null,
+   "testFileCount": 0
+  },
+  "todos": {
+   "fixmeCount": 0,
+   "todoCount": 0
+  },
+  "totalFiles": 11,
+  "totalLoc": 66
+ },
+ "modules": [
+  {
+   "cohesionScore": null,
+   "files": 2,
+   "name": "(root)",
+   "responsibility": null,
+   "rootPath": "(root)"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "cmd",
+   "responsibility": null,
+   "rootPath": "cmd"
+  },
+  {
+   "cohesionScore": null,
+   "files": 1,
+   "name": "pkg",
+   "responsibility": null,
+   "rootPath": "pkg"
+  },
+  {
+   "cohesionScore": null,
+   "files": 2,
+   "name": "src",
+   "responsibility": null,
+   "rootPath": "src"
+  }
+ ],
+ "repo": {
+  "name": "demo-polyglot",
+  "vcs": {
+   "type": null
+  }
+ },
+ "schemaVersion": "1.0",
+ "structure": {
+  "configFiles": [
+   "README.md",
+   "go.mod",
+   "package.json"
+  ],
+  "topLevelDirs": [
+   {
+    "fileCount": 2,
+    "path": "src",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "cmd",
+    "role": "guessed-entry"
+   },
+   {
+    "fileCount": 1,
+    "path": "docs",
+    "role": null
+   },
+   {
+    "fileCount": 1,
+    "path": "pkg",
+    "role": null
+   },
+   {
+    "fileCount": 6,
+    "path": "(root)",
+    "role": null
+   }
+  ]
+ },
+ "tool": {
+  "name": "repo-intel-core"
+ },
+ "warnings": [
+  {
+   "code": "MIXED_MONOREPO",
+   "detail": "检测到多生态 manifest 共存: go, node-ecosystem"
+  }
+ ]
+}

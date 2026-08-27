@@ -1,0 +1,27 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dev tools
+        run: pip install pytest ruff
+      - name: Lint
+        run: |
+          ruff check skill tests
+          ruff format --check skill tests
+      - name: Test
+        run: pytest -q
+      - name: Release check
+        run: python scripts/check_release.py
+      - name: Stdlib-only guard (lite 扫描器不得引入第三方 import)
+        run: python scripts/check_stdlib_only.py
+      - name: Smoke
+        run: python skill/scripts/scan.py scan skill --pretty > /dev/null

@@ -1,0 +1,43 @@
+# 依赖 EOL 判定规则表（M4-02，移植自 evocode dep_eol_rules.py）
+# 匹配语义：
+#   ecosystem      maven | npm | pip | go
+#   name           精确组件名（maven 用 groupId:artifactId）；prefix=true 时按前缀匹配
+#   version_prefix 清洗后版本串的前缀匹配（"2.5." 覆盖 2.5.x）
+#   未命中 → 不产风险标记（不误报原则）
+
+rules:
+  # ---- Maven / Spring Boot ----
+  - {ecosystem: maven, name: org.springframework.boot:spring-boot, version_prefix: "2.5.",
+     latest: "3.2+", risk: HIGH, prefix: true,
+     reason: "Spring Boot 2.5 已 EOL（OSS 支持 2023-11 结束，需升级 3.x 并迁移 javax→jakarta）"}
+  - {ecosystem: maven, name: org.springframework.boot:spring-boot, version_prefix: "2.6.",
+     latest: "3.2+", risk: HIGH, prefix: true,
+     reason: "Spring Boot 2.6 已 EOL（OSS 支持 2022-11 结束）"}
+  - {ecosystem: maven, name: org.springframework.boot:spring-boot, version_prefix: "2.7.",
+     latest: "3.2+", risk: HIGH, prefix: true,
+     reason: "Spring Boot 2.7 已 EOL（OSS 支持 2023-11 结束）"}
+  - {ecosystem: maven, name: org.springframework:spring-core, version_prefix: "5.3.",
+     latest: "6.x", risk: HIGH, prefix: true,
+     reason: "Spring 5.3 已于 2026-12 结束 OSS 支持（Spring Framework 6.x 需 JDK17+）"}
+
+  # ---- npm ----
+  - {ecosystem: npm, name: vue, version_prefix: "2.", latest: "3.x", risk: HIGH,
+     reason: "Vue 2 已 EOL（2023-12-31 结束支持，官方建议升级 Vue 3）"}
+  - {ecosystem: npm, name: react, version_prefix: "16.", latest: "18+", risk: HIGH,
+     reason: "React 16 已 EOL（React 17/18 为当前支持线）"}
+  - {ecosystem: npm, name: react, version_prefix: "17.", latest: "18+", risk: HIGH,
+     reason: "React 17 已 EOL（2024-03 结束支持，建议升级 18/19）"}
+  - {ecosystem: npm, name: node, version_prefix: "14.", latest: "18+", risk: HIGH,
+     reason: "Node 14 已 EOL（2023-04 结束支持）"}
+  - {ecosystem: npm, name: node, version_prefix: "16.", latest: "18+", risk: HIGH,
+     reason: "Node 16 已 EOL（2023-09 结束支持）"}
+  - {ecosystem: npm, name: node, version_prefix: "17.", latest: "18+", risk: HIGH,
+     reason: "Node 17 已 EOL（2022-06 结束支持）"}
+
+  # ---- pip ----
+  - {ecosystem: pip, name: python, version_prefix: "3.7", latest: "3.10+", risk: HIGH,
+     reason: "Python 3.7 已 EOL（2023-06 结束安全支持）"}
+  - {ecosystem: pip, name: python, version_prefix: "3.8", latest: "3.10+", risk: HIGH,
+     reason: "Python 3.8 已 EOL（2024-10 结束安全支持）"}
+  - {ecosystem: pip, name: django, version_prefix: "2.", latest: "4.x", risk: HIGH,
+     reason: "Django 2.x 已 EOL（2022-04 结束支持）"}
