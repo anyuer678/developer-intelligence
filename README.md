@@ -2,7 +2,7 @@
 
 > 让 AI Agent 深度理解你的代码仓库——从静态分析到 GitHub 全景，本地优先，零 LLM 依赖。
 
-[![License](https://img.shields.io/badge/License-GPL--3.0-orange)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776ab)](https://www.python.org/)
 
 ## 架构总览
