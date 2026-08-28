@@ -1,4 +1,4 @@
-# Developer Intelligence Platform
+﻿# Developer Intelligence Platform
 
 > 让 AI Agent 深度理解你的代码仓库——从静态分析到 GitHub 全景，本地优先，零 LLM 依赖。
 
@@ -54,4 +54,6 @@ repo-intel signals <仓库路径> --months 6
 
 ## License
 
-GPL-3.0
+MIT
+
+
