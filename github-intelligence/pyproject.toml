@@ -1,32 +1,33 @@
 [build-system]
 requires = ["setuptools>=68"]
-build-backend = "setuptools.build_meta"
+ build-backend = "setuptools.build_meta"
 
-[project]
+[pro ject]
 name = "pgi"
 version = "0.0.1a0"
-description = "Personal GitHub Intelligence — local-first analysis of your GitHub world."
-readme = "README.md"
-license = { text = "GPL-3.0-only" }
+descri ption = "Personal GitHub Intelligence — loc al-first analysis of your GitHub world."
+read me = "README.md"
+license = { text = "GPL-3.0- only" }
 authors = [{ name = "anyuer678" }]
-requires-python = ">=3.11"
+re quires-python = ">=3.11"
 
 [project.scripts]
-pgi = "pgi.cli:main"
+p gi = "pgi.cli:main"
 
-[project.optional-dependencies]
+[project.optional-depend encies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[ tool.setuptools.packages.find]
+where = ["src" ]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["te sts"]
 addopts = "-q"
 
 [tool.ruff]
-line-length = 100
+line-length  = 100
 target-version = "py311"
 
-[tool.ruff.lint]
+[tool.ruff.l int]
 select = ["E", "F", "I", "UP", "B"]
+ 
