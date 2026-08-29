@@ -28,7 +28,7 @@ jobs:
       - name: Run tests
         run: |
           set -o pipefail
-          pytest ${{ matrix.project }}/tests/ -v --tb=short 2>&1 | tee pytest-output.log
+          python -m pytest ${{ matrix.project }}/tests/ -v --tb=short 2>&1 | tee pytest-output.log
 
       - name: Publish test output
         if: failure()
