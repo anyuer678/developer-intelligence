@@ -118,10 +118,7 @@
    "ratioToSource": null,
    "testFileCount": 0
   },
-  "todos": {
-   "fixmeCount": 0,
-   "todoCount": 0
-  },
+  "todos": null,
   "totalFiles": 11,
   "totalLoc": 66
  },
