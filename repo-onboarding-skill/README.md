@@ -1,6 +1,6 @@
 # Repo Onboarding Skill
 
-[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0-blue)](https://github.com/anyuer678/repo-onboarding-skill) [![License](https://img.shields.io/badge/License-GPL--3.0-orange)](LICENSE) [![Mode](https://img.shields.io/badge/lite-%E9%9B%B6%E4%BE%9D%E8%B5%96-success)]() [![Hosts](https://img.shields.io/badge/%E5%AE%BF%E4%B8%BB-dsh%20%C2%B7%20ClaudeCode%20%C2%B7%20opencode-8a2be2)]()
+[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0-blue)](https://github.com/anyuer678/repo-onboarding-skill) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![Mode](https://img.shields.io/badge/lite-%E9%9B%B6%E4%BE%9D%E8%B5%96-success)]() [![Hosts](https://img.shields.io/badge/%E5%AE%BF%E4%B8%BB-dsh%20%C2%B7%20ClaudeCode%20%C2%B7%20opencode-8a2be2)]()
 
 > **《新人入门指南》生成器** —— 对任何仓库说一句话，产出让人或 AI Agent 十分钟上手的 PROJECT_GUIDE.md。
 
@@ -71,7 +71,7 @@ PROJECT_GUIDE.md（附录 A 标注每节来源）
 
 ## 贡献
 
-欢迎参与！报告 Bug、补宿主接入示例、改进模板均可。所有贡献默认按本项目 GPL-3.0 许可证发布。
+欢迎参与！报告 Bug、补宿主接入示例、改进模板均可。所有贡献默认按本项目 MIT 许可证发布。
 
 ## 免责声明
 
@@ -83,6 +83,6 @@ PROJECT_GUIDE.md（附录 A 标注每节来源）
 
 ## License
 
-本项目按 **GPL-3.0** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
+本项目按 **MIT** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
 
 详细版本历史见 [CHANGELOG.md](CHANGELOG.md)。

@@ -1,6 +1,6 @@
 # Repo Intel Core
 
-[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0a0-blue)](https://github.com/anyuer678/repo-intel-core) [![License](https://img.shields.io/badge/License-GPL--3.0-orange)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.11%2B-3776ab)](https://www.python.org/) [![Tests](https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-88%20%E9%A1%B9%E5%85%A8%E7%BB%BF-brightgreen)]() [![LLM](https://img.shields.io/badge/LLM-%E9%9B%B6%E4%BE%9D%E8%B5%96-lightgrey)]()
+[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0a0-blue)](https://github.com/anyuer678/repo-intel-core) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![Python](https://img.shields.io/badge/Python-3.11%2B-3776ab)](https://www.python.org/) [![Tests](https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-110%20%E9%A1%B9%E5%85%A8%E7%BB%BF-brightgreen)]() [![LLM](https://img.shields.io/badge/LLM-%E9%9B%B6%E4%BE%9D%E8%B5%96-lightgrey)]()
 
 > **跨语言仓库静态解析引擎** —— 把任意代码仓库变成结构化、可版本化、可离线生成的 RepoProfile JSON。
 
@@ -82,7 +82,7 @@ CLI (repo-intel scan|graph|signals)
 
 ## 贡献
 
-欢迎参与！报告 Bug、补规则表、改进文档均可。所有贡献默认按本项目 GPL-3.0 许可证发布。
+欢迎参与！报告 Bug、补规则表、改进文档均可。所有贡献默认按本项目 MIT 许可证发布。
 
 ## 免责声明
 
@@ -94,6 +94,6 @@ CLI (repo-intel scan|graph|signals)
 
 ## License
 
-本项目按 **GPL-3.0** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
+本项目按 **MIT** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
 
 详细版本历史见 [CHANGELOG.md](CHANGELOG.md)。
