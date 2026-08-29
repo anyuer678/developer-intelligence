@@ -1,6 +1,6 @@
 # GitHub Intelligence (pgi)
 
-[![Status](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-P0%20%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5-blue)]() [![License](https://img.shields.io/badge/License-GPL--3.0-orange)](LICENSE) [![Tests](https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-57%20%E9%A1%B9%E5%85%A8%E7%BB%BF-brightgreen)]() [![Storage](https://img.shields.io/badge/%E5%AD%98%E5%82%A8-SQLite%20%2B%20FTS5-003b57)]()
+[![Status](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-P0%20%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5-blue)]() [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![Tests](https://img.shields.io/badge/%E6%B5%8B%E8%AF%95-57%20%E9%A1%B9%E5%85%A8%E7%BB%BF-brightgreen)]() [![Storage](https://img.shields.io/badge/%E5%AD%98%E5%82%A8-SQLite%20%2B%20FTS5-003b57)]()
 
 > **理解个人 GitHub 世界的本地 AI 分析系统** —— 不只是数 commit，而是回答"我做过什么、怎么成长、哪个项目值得继续"。
 
@@ -70,7 +70,7 @@ GitHub API ──collector(🔒时序锁)──▶ SQLite(local.db)
 
 ## 贡献
 
-欢迎参与！所有贡献默认按本项目 GPL-3.0 许可证发布。
+欢迎参与！所有贡献默认按本项目 MIT 许可证发布。
 
 ## 免责声明
 
@@ -78,6 +78,6 @@ GitHub API ──collector(🔒时序锁)──▶ SQLite(local.db)
 
 ## License
 
-本项目按 **GPL-3.0** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
+本项目按 **MIT** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
 
 详细版本历史见 [CHANGELOG.md](CHANGELOG.md)。

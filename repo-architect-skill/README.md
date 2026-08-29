@@ -1,6 +1,6 @@
 # Repo Architect Skill
 
-[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0-blue)](https://github.com/anyuer678/repo-architect-skill) [![License](https://img.shields.io/badge/License-GPL--3.0-orange)](LICENSE) [![Engine](https://img.shields.io/badge/%E5%BC%95%E6%93%8E-repo--intel--core%3E%3D0.1-6db3f2)]() [![Hosts](https://img.shields.io/badge/%E5%AE%BF%E4%B8%BB-dsh%20%C2%B7%20ClaudeCode%20%C2%B7%20opencode-8a2be2)]()
+[![Version](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-v0.1.0-blue)](https://github.com/anyuer678/repo-architect-skill) [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE) [![Engine](https://img.shields.io/badge/%E5%BC%95%E6%93%8E-repo--intel--core%3E%3D0.1-6db3f2)]() [![Hosts](https://img.shields.io/badge/%E5%AE%BF%E4%B8%BB-dsh%20%C2%B7%20ClaudeCode%20%C2%B7%20opencode-8a2be2)]()
 
 > **架构体检报告生成器** —— 模块职责、依赖耦合、数据流、mermaid 架构图、风险与分级建议，一份报告说清一个仓库的骨架。
 
@@ -66,7 +66,7 @@ opencode     cp -r skill ~/.config/opencode/skills/repo-architect
 
 ## 贡献
 
-欢迎参与！所有贡献默认按本项目 GPL-3.0 许可证发布。
+欢迎参与！所有贡献默认按本项目 MIT 许可证发布。
 
 ## 免责声明
 
@@ -74,6 +74,6 @@ opencode     cp -r skill ~/.config/opencode/skills/repo-architect
 
 ## License
 
-本项目按 **GPL-3.0** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
+本项目按 **MIT** 协议提供。完整协议文本见 [LICENSE](LICENSE)。
 
 详细版本历史见 [CHANGELOG.md](CHANGELOG.md)。
