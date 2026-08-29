@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [repo-intel-core, github-intelligence, repo-onboarding-skill, repo-architect-skill]
     steps:
       - uses: actions/checkout@v4
 
@@ -19,8 +22,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e "repo-intel-core[dev]"
+          pip install -e "${{ matrix.project }}[dev]" || pip install -e "${{ matrix.project }}"
           pip install pytest
 
       - name: Run tests
-        run: pytest -v
+        run: |
+          set -o pipefail
+          pytest ${{ matrix.project }}/tests/ -v --tb=short 2>&1 | tee pytest-output.log
+
+      - name: Publish test output
+        if: failure()
+        run: |
+          echo "## Test Output (${{ matrix.project }})" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 150 pytest-output.log >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
