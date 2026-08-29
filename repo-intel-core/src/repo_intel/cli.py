@@ -102,7 +102,8 @@ def _mermaid(profile_json: dict) -> str:
     ids = {name: f"m{i}" for i, name in enumerate(mods)}
     lines = ["flowchart LR"]
     for name in mods:
-        safe = name.replace("\\", "\\\\").replace('"', "'").replace("|", "\\|").replace(")", "\\)")
+        # 标签用双引号包裹：引号内的 ) 无需转义，多余的 \ 会原样出现在输出里
+        safe = name.replace("\\", "\\\\").replace('"', "'").replace("|", "\\|")
         lines.append(f'  {ids[name]}["{safe}"]')
     for edge in (profile_json.get("dependencyGraph") or {}).get("internal") or []:
         src, dst = ids.get(edge["frm"]), ids.get(edge["to"])

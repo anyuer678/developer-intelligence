@@ -22,8 +22,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e "${{ matrix.project }}[dev]" || pip install -e "${{ matrix.project }}"
           pip install pytest
+          # 技能包（repo-*-skill）是内容包而非可安装 Python 包，无 pyproject 时跳过安装
+          if [ -f "${{ matrix.project }}/pyproject.toml" ]; then
+            pip install -e "${{ matrix.project }}[dev]" || pip install -e "${{ matrix.project }}"
+          fi
 
       - name: Run tests
         run: |

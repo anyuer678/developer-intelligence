@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import pytest
@@ -31,9 +31,12 @@ def seeded_db(tmp_path: Path) -> Path:
             "2026-08-26T00:00:00Z",
         ),
     )
+    # 种子日期相对今天计算：硬编码日期会随真实时间漂移出"最近7天"窗口（时间炸弹）
+    recent_1 = f"{(date.today() - timedelta(days=2)).isoformat()}T10:00:00Z"
+    recent_2 = f"{(date.today() - timedelta(days=3)).isoformat()}T10:00:00Z"
     rows = [
-        ("a" * 40, "2026-08-20T10:00:00Z", "feat: sandbox 权限层"),
-        ("b" * 40, "2026-08-21T10:00:00Z", "fix: mcp server 超时"),
+        ("a" * 40, recent_1, "feat: sandbox 权限层"),
+        ("b" * 40, recent_2, "fix: mcp server 超时"),
     ]
     for sha, at, msg in rows:
         cid = build("github", "commit", f"anyuer678/lumen@{sha}")
