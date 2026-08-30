@@ -34,6 +34,7 @@ def seeded_db(tmp_path: Path) -> Path:
     # 种子日期相对今天计算：硬编码日期会随真实时间漂移出"最近7天"窗口（时间炸弹）
     recent_1 = f"{(date.today() - timedelta(days=2)).isoformat()}T10:00:00Z"
     recent_2 = f"{(date.today() - timedelta(days=3)).isoformat()}T10:00:00Z"
+    issue_date = (date.today() - timedelta(days=2)).isoformat()
     rows = [
         ("a" * 40, recent_1, "feat: sandbox 权限层"),
         ("b" * 40, recent_2, "fix: mcp server 超时"),
@@ -47,12 +48,13 @@ def seeded_db(tmp_path: Path) -> Path:
     iid = build("github", "issue", "anyuer678/lumen#7")
     conn.execute(
         "INSERT INTO issues(id, repo_id, number, title, state, opened_at) "
-        "VALUES (?,?,?,?, 'open', '2026-08-22')",
+        "VALUES (?,?,?,?, 'open', ?)",
         (
             iid,
             rid,
             7,
             "sandbox 边界场景",
+            issue_date,
         ),
     )
     conn.commit()
