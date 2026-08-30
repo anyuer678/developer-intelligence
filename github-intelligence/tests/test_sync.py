@@ -87,14 +87,22 @@ def test_upsert_repo_commit_issue_release():
 def test_sync_full_flow(mock_paginate, mock_get):
     conn, path = _conn()
     try:
-        # /user 用 _get；repos/stars 用 _paginate
-        mock_get.return_value = {"login": "anyuer678"}
+        # 无 token 时：/user 和 repos 都走 _get；commits/issues/releases/stars 走 _paginate
+        def fake_get(url, token=""):
+            if url.endswith("/user"):
+                return {"login": "anyuer678"}
+            if "/repos?per_page" in url:
+                return [_fake_repo("lumen"), _fake_repo("keyvault")]
+            return []
+        mock_get.side_effect = fake_get
+        # 每仓库 commits/issues/releases 各 1 次（2 仓库 = 6 次）+ stars 1 次
         mock_paginate.side_effect = [
-            [_fake_repo("lumen"), _fake_repo("keyvault")],  # repos
-            [],  # commits for lumen（空）
-            [],  # issues for lumen
-            [],  # commits for keyvault
-            [],  # issues for keyvault
+            [],  # lumen commits
+            [],  # lumen issues
+            [],  # lumen releases
+            [],  # keyvault commits
+            [],  # keyvault issues
+            [],  # keyvault releases
             [{"full_name": "some/starred"}],  # starred
         ]
         stats = sync.sync(conn, username=None, include_commits=True, max_repos=2)
