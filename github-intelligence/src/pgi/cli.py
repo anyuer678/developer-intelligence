@@ -78,6 +78,34 @@ def _cmd_ask(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_sync(args: argparse.Namespace) -> int:
+    from pgi.sync import sync
+
+    if not _is_file_ok(args):
+        return 2
+    conn = connect(args.db)
+    try:
+        stats = sync(conn, args.user, include_commits=not args.no_commits, max_repos=args.max_repos)
+    except Exception as exc:  # noqa: BLE001 - CLI 层兜底
+        print(f"采集失败: {exc}", file=sys.stderr)
+        return 2
+    finally:
+        conn.close()
+
+    print(f"✅ 采集完成: repos={stats['repos']} commits={stats['commits']} "
+          f"issues={stats['issues']} releases={stats['releases']} stars={stats['stars']}")
+    return 0
+
+
+def _is_file_ok(args: argparse.Namespace) -> bool:
+    from pathlib import Path
+
+    if not Path(args.db).is_file():
+        print(f"错误: 库不存在，先执行 pgi init --db {args.db}", file=sys.stderr)
+        return False
+    return True
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="pgi", description="Personal GitHub Intelligence")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -98,6 +126,12 @@ def main(argv: list[str] | None = None) -> int:
     ask.add_argument("--limit", type=int, default=8)
     ask.add_argument("--format", choices=["summary", "json"], default="summary")
 
+    sync_p = sub.add_parser("sync", help="从 GitHub 采集仓库/提交/议题/发布/星标（增量）")
+    sync_p.add_argument("--db", default="pgi.db")
+    sync_p.add_argument("--user", default=None, help="GitHub 用户名（缺省用 token 当前用户）")
+    sync_p.add_argument("--no-commits", action="store_true", help="跳过 commits 采集（加快）")
+    sync_p.add_argument("--max-repos", type=int, default=50, help="最多采集的仓库数")
+
     mcp = sub.add_parser("mcp", help="以 stdio JSON-RPC 暴露 memory.* 工具（lumen/宿主接入）")
     mcp.add_argument("--db", default="pgi.db")
 
@@ -108,6 +142,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_timeline(args)
     if args.command == "ask":
         return _cmd_ask(args)
+    if args.command == "sync":
+        return _cmd_sync(args)
     if args.command == "mcp":
         from pgi.db import connect as _connect
         from pgi.mcp_server import serve
