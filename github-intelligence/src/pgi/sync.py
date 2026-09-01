@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import sys
 import sqlite3
 import time
 from datetime import datetime, timezone
@@ -208,24 +210,24 @@ def sync(conn: sqlite3.Connection, username: str | None = None,
                 for c in commits:
                     upsert_commit(conn, full, c)
                     stats["commits"] += 1
-            except SyncError:
-                pass  # 单仓失败不阻断（如空仓/权限不足）
+            except SyncError as e:
+                print(f"  [WARN] commits {full}: {e}", file=sys.stderr)
 
         try:
             issues = _paginate(f"{API_BASE}/repos/{full}/issues?state=all&per_page=100", token, max_pages=2)
             for i in issues:
                 upsert_issue(conn, full, i)
                 stats["issues"] += 1
-        except SyncError:
-            pass
+        except SyncError as e:
+            print(f"  [WARN] issues {full}: {e}", file=sys.stderr)
 
         try:
             releases = _paginate(f"{API_BASE}/repos/{full}/releases?per_page=30", token, max_pages=1)
             for rel in releases:
                 upsert_release(conn, full, rel)
                 stats["releases"] += 1
-        except SyncError:
-            pass
+        except SyncError as e:
+            print(f"  [WARN] releases {full}: {e}", file=sys.stderr)
 
     # 4. 我 star 的仓库
     try:
