@@ -168,3 +168,27 @@ def test_id_contract_in_sync():
         import os
 
         os.unlink(path)
+
+def test_upsert_commit_is_my_commit():
+    """is_my_commit 仅在作者 login 与 my_login 一致时为 1。"""
+    conn, path = _conn()
+    try:
+        mine = _fake_commit("aaa111")
+        mine["author"] = {"login": "Anyuer678"}  # 大小写不敏感
+        theirs = _fake_commit("bbb222")
+        theirs["author"] = {"login": "someone-else"}
+        ghost = _fake_commit("ccc333")  # 无 author（GitHub ghost 提交）
+        sync.upsert_repo(conn, _fake_repo("a"))
+        sync.upsert_commit(conn, "anyuer678/a", mine, my_login="anyuer678")
+        sync.upsert_commit(conn, "anyuer678/a", theirs, my_login="anyuer678")
+        sync.upsert_commit(conn, "anyuer678/a", ghost, my_login="anyuer678")
+        conn.commit()
+        rows = dict(conn.execute("SELECT sha, is_my_commit FROM commits").fetchall())
+        assert rows["aaa111"] == 1
+        assert rows["bbb222"] == 0
+        assert rows["ccc333"] == 0
+    finally:
+        conn.close()
+        import os
+
+        os.unlink(path)
