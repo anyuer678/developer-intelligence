@@ -41,7 +41,7 @@ repo-intel signals <仓库路径> --months 6
 
 ## 设计原则
 
-- **本地优先**：核心引擎零网络、零 LLM 依赖
+- **本地优先**：核心引擎（repo-intel-core）零网络、零 LLM 依赖；github-intelligence 需 GitHub API 进行在线同步
 - **幻觉防护**：所有声称追溯到扫描证据，缺失数据标注"未检测到"
 - **表驱动扩展**：新语言/框架只需添加 YAML 规则文件
 - **引擎/表现分离**：core 产出事实，LLM 解读交给上层消费者
