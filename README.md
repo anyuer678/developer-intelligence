@@ -1,6 +1,10 @@
 ﻿# Developer Intelligence Platform
 
-> 让 AI Agent 深度理解你的代码仓库——从静态分析到 GitHub 全景，本地优先，零 LLM 依赖。
+> **状态**：`engine` / `portfolio` · **核心是仓库静态解析引擎（零 LLM）**，不是运行时 Agent  
+> **GitHub Intelligence**：子包仍为 **P0 准备阶段（采集器未交付）**，请勿视为可用全景分析  
+> [![status](https://img.shields.io/badge/status-engine-lightgrey)](#)
+
+> 让 AI Agent **消费** 扫描结果理解代码仓库——引擎产事实，LLM 解读外置，本地优先，零 LLM 依赖。
 
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776ab)](https://www.python.org/)
@@ -11,7 +15,7 @@
 repo-intel-core（底层引擎）
     ├── repo-onboarding-skill（新人引导文档）
     ├── repo-architect-skill（架构健康报告）
-    └── github-intelligence（GitHub 全景分析 → lumen Agent）
+    └── github-intelligence（P0 准备：schema/MCP 壳层；**采集器未实现**）
 ```
 
 ## 子项目
@@ -21,7 +25,7 @@ repo-intel-core（底层引擎）
 | [repo-intel-core](repo-intel-core/) | 跨语言仓库静态解析引擎，输出结构化 RepoProfile JSON | v0.1.0a0 |
 | [repo-onboarding-skill](repo-onboarding-skill/) | 新人入门指南生成器，双模式（lite/full） | v0.1.0 |
 | [repo-architect-skill](repo-architect-skill/) | 架构体检报告生成器，含 mermaid 图 | v0.1.0 |
-| [github-intelligence](github-intelligence/) | 个人 GitHub 分析，SQLite + FTS5 + MCP 工具 | v0.0.1a0 |
+| [github-intelligence](github-intelligence/) | 个人 GitHub 分析（**collector 未实现**，仅 schema/Analyst/MCP 壳） | v0.0.1a0 **P0** |
 
 ## 快速开始
 
