@@ -1,4 +1,6 @@
-﻿# Developer Intelligence Platform
+# Developer Intelligence Platform
+
+[![Tests](https://github.com/anyuer678/developer-intelligence/actions/workflows/test.yml/badge.svg)](https://github.com/anyuer678/developer-intelligence/actions/workflows/test.yml)
 
 > **状态**：`engine` / `portfolio` · **核心是仓库静态解析引擎（零 LLM）**，不是运行时 Agent  
 > **GitHub Intelligence**：子包仍为 **P0 准备阶段（采集器未交付）**，请勿视为可用全景分析  
