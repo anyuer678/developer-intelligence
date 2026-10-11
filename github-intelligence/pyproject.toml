@@ -17,6 +17,10 @@ pgi = "pgi.cli:main"
 [project.optional-dependencies]
 dev = ["pytest>=9.1.1", "ruff>=0.16.10"]
 
+
+[project.urls]
+Repository = "https://github.com/anyuer678/developer-intelligence"
+Issues = "https://github.com/anyuer678/developer-intelligence/issues"
 [tool.setuptools.packages.find]
 where = ["src"]
 

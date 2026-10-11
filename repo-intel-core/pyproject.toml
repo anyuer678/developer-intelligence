@@ -40,6 +40,10 @@ arch = [
 [project.scripts]
 repo-intel = "repo_intel.cli:main"
 
+
+[project.urls]
+Repository = "https://github.com/anyuer678/developer-intelligence"
+Issues = "https://github.com/anyuer678/developer-intelligence/issues"
 [tool.setuptools.packages.find]
 where = ["src"]
 
