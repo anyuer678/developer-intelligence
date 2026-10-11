@@ -17,6 +17,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       matrix:
         project: [repo-intel-core, github-intelligence, repo-onboarding-skill, repo-architect-skill]
