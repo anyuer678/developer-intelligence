@@ -7,6 +7,7 @@
 ## [Unreleased]
 
 ### Added
+- MCP 兼容面 `python -m repo_intel.mcp_server`：stdio JSON-RPC 四工具（repo_scan / repo_graph / repo_signals / repo_evolution，映射四个 CLI 子命令），会话级 profile 缓存（refresh 可强刷）——供 lumen 等 Agent Runtime 宿主注册（协议面与 pgi.mcp_server 同款）；测试 121 项
 - M3 全量交付：
   - GitMeta：单次 git log 解析首末提交/总数/贡献者/月度活跃 + branch/tag 计数；无 .git 保持 null 三态，命令失败降级 `GIT_META_UNAVAILABLE` warning；`scan --skip-git` 可关闭
   - 月度信号包 `repo-intel signals <path> [--months N] [--format summary|json]`：commits / contributors / new_dirs / deps_added（月末 blob 差集）/ top_terms——Evolution Timeline 的直接输入
