@@ -6,7 +6,8 @@ import sqlite3
 from pathlib import Path
 
 SCHEMA_VERSION = 1
-_SCHEMA_PATH = Path(__file__).resolve().parent.parent.parent / "db" / "schema.sql"
+# schema.sql 随包分发（wheel/sdist 内）；源码仓时也位于 src/pgi/ 下，单一位置
+_SCHEMA_PATH = Path(__file__).resolve().parent / "schema.sql"
 
 
 def connect(path: str | Path = ":memory:") -> sqlite3.Connection:
