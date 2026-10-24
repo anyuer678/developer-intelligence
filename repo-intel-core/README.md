@@ -23,6 +23,7 @@
 | 🔧 buildRun 推断 | package.json scripts > Makefile > CI `run:` 三源交叉 + 锁文件判包管理器 + 置信分级 |
 | ⏱️ GitMeta + 信号包 | 首末提交/贡献者/月度活跃；`signals` 月度切片（deps_added/new_dirs/top_terms）供 Timeline 使用 |
 | 🩺 质量指标 | 复杂度热点启发式 / 测试证据 / TODO-FIXME 字节计数 |
+| 🔌 MCP 兼容面 | `python -m repo_intel.mcp_server` stdio 四工具，可注册进 lumen 等 Agent Runtime 宿主（含会话缓存） |
 | 🛡️ 排除体系 | 默认清单剪枝 + `.repointelignore` + 超大文件降级——永远部分成功，不抛异常 |
 
 ## 快速开始
@@ -35,6 +36,8 @@ repo-intel scan <仓库路径> -o profile.json     # 完整 RepoProfile JSON
 repo-intel graph <仓库路径> --format mermaid   # 模块依赖图
 repo-intel signals <仓库路径> --months 6       # 月度信号包（Timeline 输入）
 repo-intel evolution <仓库路径> --days 30      # numstat 演化统计+热点规则
+
+python -m repo_intel.mcp_server               # stdio MCP server（lumen 等 Agent 宿主接入）
 ```
 
 可选参数：`--skip-git` 跳过 git 元数据；`.repointelignore` 自定义排除（语法同 gitignore 子集）。
