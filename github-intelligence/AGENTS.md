@@ -9,7 +9,7 @@
 - 重建本地库: `python -c "from pgi.db import init_db; init_db(':memory:')"` 冒烟
 
 ## 架构地图
-- `db/schema.sql` — SQLite Schema v1 草案（事实表 + `_analysis` 预留命名 + FTS5 触发器）
+- `src/pgi/schema.sql` — SQLite Schema v1（随包分发；事实表 + `_analysis` 预留命名 + FTS5 触发器）
 - `src/pgi/ids.py` — 全局实体 ID 契约（04 号计划书 DS-0：{connector}:{type}:{native_id} + content_hash）
 - `src/pgi/db.py` — 连接/init/meta 版本管理，WAL
 - 未来: collector(🔒 时序锁) / timeline / analyst / cli
