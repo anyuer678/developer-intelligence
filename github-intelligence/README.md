@@ -21,7 +21,7 @@ GitHub API ──采集──▶ SQLite(事实) ──▶ Timeline / Analyst / �
 | 📈 Evolution Timeline | ✅ | 稀疏月合并 · 特征余弦边界（含日历缺口强制切分）· summary/json/gantt 渲染 · LLM 命名外置钩子 |
 | 💬 Analyst 检索层 | ✅ | FTS 安全召回 + 中文时间表达式解析（十类）+ 来源标签证据块——LLM 回答外置 |
 | 🔌 lumen 接入层 | ✅ | `memory.search/get/timeline/related/observe` 五工具 + 最小 stdio JSON-RPC 调度器 |
-| 🔒 采集器 | 时序锁 | Gate 1 解锁后开工：GraphQL 批量 + 增量同步 + keyvault 取 token |
+| ✅ 采集器 | 已实测 | REST 分页 + 限流重试 + UPSERT 增量（2026-10-24 实测：37 仓 / 1395 commits / 321 issues / 35 releases） |
 
 ## 快速开始
 
@@ -35,7 +35,7 @@ pgi ask "最近一个月 sandbox 相关的提交"                 # Analyst 检�
 pgi mcp                                               # stdio JSON-RPC：lumen 接入点
 ```
 
-> 当前处于 P0 准备阶段：schema/契约/Timeline/Analyst/MCP 工具层已就绪；采集器按既定时序锁待首发 Skill 验证后开工。隐私红线：Token 经 keyvault 存取、永不入库不入日志。
+> 采集器已于 2026-10-24 实测打通（37 仓全量同步，记录见 docs/pgi-lumen-integration.md）；MCP 五工具完成 stdio 协议级预验，lumen 侧动态注册复验待做。pip wheel 分发待 fix/pgi-packaging 合入（schema.sql 随包）。隐私红线不变：Token 经 keyvault 存取、永不入库不入日志。
 
 ## 系统架构
 
@@ -64,7 +64,7 @@ GitHub API ──collector(🔒时序锁)──▶ SQLite(local.db)
 
 | 症状 | 排查 |
 |---|---|
-| 为什么没有采集命令？ | 时序锁设计（见母目录 03 号计划书）：首发 Skill 过 Gate 1 前不开工，避免精力分散 |
+| 采集器可用了吗？ | 是：`pgi sync`（2026-10-24 实测 37 仓全量；wheel 安装待 fix/pgi-packaging 合入，源码 `pip install -e .` 即可用） |
 | 中文搜索搜不到词中间的内容 | FTS5 unicode61 对中文整串成 token——v1 按完整短语匹配，语义层由 embedding 兜底 |
 | `pgi ask` 只出证据不给答案 | 设计如此：检索与生成解耦，答案由你选择的 LLM 层基于证据块产出 |
 

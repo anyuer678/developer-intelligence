@@ -17,17 +17,38 @@
 repo-intel-core（底层引擎）
     ├── repo-onboarding-skill（新人引导文档）
     ├── repo-architect-skill（架构健康报告）
-    └── github-intelligence（P0 准备：schema/MCP 壳层；**采集器未实现**）
+    └── github-intelligence（采集已实测：schema/采集器/Analyst/MCP 五工具）
 ```
 
 ## 子项目
 
 | 项目 | 说明 | 状态 |
 |---|---|---|
-| [repo-intel-core](repo-intel-core/) | 跨语言仓库静态解析引擎，输出结构化 RepoProfile JSON | v0.1.0a0 |
+| [repo-intel-core](repo-intel-core/) | 跨语言仓库静态解析引擎，输出结构化 RepoProfile JSON；含 MCP stdio 四工具（feat/repo-intel-mcp） | v0.1.0a0 |
 | [repo-onboarding-skill](repo-onboarding-skill/) | 新人入门指南生成器，双模式（lite/full） | v0.1.0 |
 | [repo-architect-skill](repo-architect-skill/) | 架构体检报告生成器，含 mermaid 图 | v0.1.0 |
-| [github-intelligence](github-intelligence/) | 个人 GitHub 分析（**collector 未实现**，仅 schema/Analyst/MCP 壳） | v0.0.1a0 **P0** |
+| [github-intelligence](github-intelligence/) | 个人 GitHub 分析（采集器 2026-10-24 实测：37 仓全量；MCP 五工具协议级预验通过） | v0.0.1a0 内测 |
+
+## 生态 · lumen 接入
+
+两个子包均为标准 MCP stdio server，可注册进 [lumen](https://github.com/anyuer678/lumen)（Agent Runtime）：
+
+```yaml
+# lumen conf/config.yaml（mcp.enabled: true）
+mcp:
+    enabled: true
+    servers:
+        - name: pgi-memory        # GitHub 记忆（memory_* 五工具）
+          command: python
+          args: ["-m", "pgi.mcp_server", "--db", "C:\Users\<user>\.pgi\pgi.db"]
+          transport: stdio
+        - name: repo-intel        # 本地仓库理解（repo_* 四工具）
+          command: python
+          args: ["-m", "repo_intel.mcp_server"]
+          transport: stdio
+```
+
+协议级预验记录（2026-10-24）见 [github-intelligence/docs/pgi-lumen-integration.md](github-intelligence/docs/pgi-lumen-integration.md)；lumen 侧动态注册复验待做。
 
 ## 快速开始
 
