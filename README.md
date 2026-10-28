@@ -3,7 +3,7 @@
 [![Tests](https://github.com/anyuer678/developer-intelligence/actions/workflows/test.yml/badge.svg)](https://github.com/anyuer678/developer-intelligence/actions/workflows/test.yml)
 
 > **状态**：`engine` / `portfolio` · **核心是仓库静态解析引擎（零 LLM）**，不是运行时 Agent  
-> **GitHub Intelligence**：子包仍为 **P0 准备阶段（采集器未交付）**，请勿视为可用全景分析  
+> **GitHub Intelligence**：子包为 **v0.0.1a0 内测**——采集器已于 2026-10-24 实测 37 仓全量，MCP 五工具协议级预验通过；lumen 侧动态注册复验待做，暂不承诺生产可用  
 > [![status](https://img.shields.io/badge/status-engine-lightgrey)](#)
 
 > 让 AI Agent **消费** 扫描结果理解代码仓库——引擎产事实，LLM 解读外置，本地优先，零 LLM 依赖。
